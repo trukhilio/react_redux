@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './customPropType';
+import App from './lifecycle';
 
 ReactDOM.render(
     <App />,
