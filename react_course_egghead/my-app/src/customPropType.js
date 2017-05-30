@@ -11,10 +11,10 @@ const Msg = (props) => <h1>Message - {props.text}</h1>;
 Msg.propTypes={
     text(props, propName, component){
         if(!(propName in props)){
-            return new Error('no any ${propName}')
+            return new Error(`no any ${propName}`)
         }
         if(props[propName].length<30){
-            return new Error ('${propName} is 2 short, write more')
+            return new Error (`${propName} is 2 short, write more`)
         }
     }
 };
