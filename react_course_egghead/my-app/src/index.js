@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './map';
+import App from './reusableComponent';
 
 ReactDOM.render(
     <App />,
