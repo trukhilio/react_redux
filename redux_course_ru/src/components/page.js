@@ -5,16 +5,25 @@ export default class Page extends Component{
         this.props.setYear(+e.target.innerText)
     }
     render(){
-        const { year, photos } = this.props;
+        const { year, photos, fetching } = this.props;
         return(
-            <div>
-                <button onClick={::this.onYearBtnClick}>2015</button>
-                <button onClick={::this.onYearBtnClick}>2016</button>
-                <button onClick={::this.onYearBtnClick}>2017</button>
-                <h3>{year} year</h3>
+            <div className="ib page">
                 <p>
-                    You have {photos.length} photos for {year}
+                    <button onClick={::this.onYearBtnClick}>2015</button>{' '}
+                    <button onClick={::this.onYearBtnClick}>2016</button>{' '}
+                    <button onClick={::this.onYearBtnClick}>2017</button>
                 </p>
+                <h3>{year} year</h3>
+                {
+                    fetching ?
+                    <p>
+                        Downloading...
+                    </p>
+                    :
+                    <p>
+                        You have {photos.length} photos for {year}
+                    </p>
+                }
             </div>
         )
     }
