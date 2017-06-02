@@ -2,27 +2,30 @@ import React, { PropTypes, Component } from 'react'
 
 export default class Page extends Component{
     onYearBtnClick(e){
-        this.props.setYear(+e.target.innerText)
+        this.props.getPhotos(+e.target.innerText)
     }
     render(){
-        const { year, photos, fetching } = this.props;
+        const { year, photos, fetching, error } = this.props;
+        const years = [2017, 2016, 2015, 2014, 2013, 2012];
         return(
             <div className="ib page">
                 <p>
-                    <button onClick={::this.onYearBtnClick}>2015</button>{' '}
-                    <button onClick={::this.onYearBtnClick}>2016</button>{' '}
-                    <button onClick={::this.onYearBtnClick}>2017</button>
+                    {years.map((item,index)=> <button key={index} onClick={::this.onYearBtnClick}>{item}</button>)}
                 </p>
-                <h3>{year} year</h3>
+                <h3>{year} year [{photos.length}]</h3>
+                { error ? <p> Oops, download is failed... </p> : '' }
                 {
                     fetching ?
                     <p>
                         Downloading...
                     </p>
                     :
-                    <p>
-                        You have {photos.length} photos for {year}
-                    </p>
+                    photos.map((entry, index) =>
+                        <div key={index}>
+                            <p><img src={entry.src} /></p>
+                            <p>{entry.likes.count} ❤</p>
+                        </div>
+                    )
                 }
             </div>
         )
@@ -32,5 +35,6 @@ export default class Page extends Component{
 Page.propTypes = {
     year: PropTypes.number.isRequired,
     photos: PropTypes.array.isRequired,
-    setYear: PropTypes.func.isRequired
+    getPhotos: PropTypes.func.isRequired,
+    error: PropTypes.string.isRequired
 };
