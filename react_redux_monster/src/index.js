@@ -21,7 +21,8 @@ function playList (state = initialState, action){
     return state;
 }
 
-const store = createStore(playList);
+const store = createStore(playList,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
     <Provider store={store}>
