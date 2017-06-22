@@ -1,4 +1,9 @@
-const initialState = [];
+const initialState = [
+    {
+        id: 1234,
+        name: 'Hands up! Yo!'
+    }
+];
 
 export default function playList (state = initialState, action){
     if (action.type === 'ADD_TRACK'){
