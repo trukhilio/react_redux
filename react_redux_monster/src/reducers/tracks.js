@@ -1,7 +1,4 @@
-const initialState = [
-    'Smells like teen spirit',
-    'Am I Evil'
-];
+const initialState = [];
 
 export default function playList (state = initialState, action){
     if (action.type === 'ADD_TRACK'){
